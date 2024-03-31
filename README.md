@@ -18,7 +18,8 @@
 ### 5. API
 #### CUDA提供兩層API接口 (運行Runtime、驅動Driver)
 #### 兩者調用性能無異
-
-
+### 6. 編譯
+#### C++編譯: gcc ...cpp -o ...
+#### CUDA編譯: nvcc ...cu -o ...
 
 
