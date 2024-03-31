@@ -58,7 +58,15 @@
 #### 線程唯一標示: Idx = threadIdx.x + blockIdx.x * blockDim.x
 ### 11. 多維線程
 #### CUDA可以組織三維的網格、線程塊
-#### blockIdx、threadIdx是類型維uint3的變數，具有x、y、z三個無符號程元
+#### blockIdx、threadIdx是類型維uint3的變數，具有x、y、z三個無符號成員
+#### 定義多維網格和線程塊
+#### dim3 grid_size(Gx, Gy, Gz)
+#### dim3 block_size(Bx, By, Bz)
+
+
+
+
+
 
 
 
