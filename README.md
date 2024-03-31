@@ -62,10 +62,18 @@
 #### 定義多維網格和線程塊
 #### dim3 grid_size(Gx, Gy, Gz)
 #### dim3 block_size(Bx, By, Bz)
-
-
-
-
+### 12. 一維網格、一維線程塊
+#### int id = blockIdx.x + blockDim.x * threadIdx.x;
+#### (線程塊索引 + 線程數量 * 線程索引)
+### 13. 二維網格、二維線程塊
+#### int blockId = blockIdx.x + blockId.y * gridDim.x
+#### int threadId = threadIdx.x + threadIdx.y * blockDim.x
+#### int id = blockId * (blockDim.x * blockDim.y) + threadId
+### 14. 三維網格、三維線程塊
+#### int blockId = blockIdx.x + blockIdx.y * gridDim.x
+#### int threadId = threadIdx.x + (threadx.y * blockDim.x) + (threadIdx.z * (blockDim.x * blockDim.y))
+#### int id = threadId + blockId * (blockDim.x * blockDim.y * blockDim.z)
+####
 
 
 
