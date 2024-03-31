@@ -38,6 +38,31 @@
 #### b.核函數調用
 #### c. 主機程式碼(將GPU運算結果回傳給CPU主機)
 #### Note: 核函數不支持CPP的iostream
+### 9. 線程模型結構
+#### a. grid: 網格
+#### b. block: 線程塊
+#### 邏輯上的劃分、並非物理意義
+#### 配置: <<<grid_size, block_size>>>
+#### 最大線程塊: 1024
+#### 最大網格大小: 2^31 - 1 (針對一維網格)
+### 10. 一維線程模型
+#### 每個線程在核函數中有唯一標示
+#### 每個線程的維一表示由<<<grod_size, block_size>>>確定，二者為內建變數(built-in variable)
+#### a. gridDim.x: 
+#### b. blockDim.x: 
+#### 線程索引保存成內建變數
+#### a. blockIdx.x: 變數指定一個線程在一個網格中的線程塊索引值，0 ~ gridDim.x - 1
+#### b. threadIdx.x: 變數指定一個線程在一個線程塊中的線程索引值，0 ~ blockDim - 1
+#### ex. <<<2, 4>>>: 網格中有2個線程塊(0 1)，每個線程塊有4個線程(0 1 2 3)
+#### =>gridDim.x == 2； blockDim.x == 4； blockIdx.x == 0~1； threadIdx.x == 0~3
+#### 線程唯一標示: Idx = threadIdx.x + blockIdx.x * blockDim.x
+### 11. 多維線程
+#### CUDA可以組織三維的網格、線程塊
+#### blockIdx、threadIdx是類型維uint3的變數，具有x、y、z三個無符號程元
+
+
+
+
 
 
 
