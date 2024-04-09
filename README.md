@@ -73,7 +73,31 @@
 #### int blockId = blockIdx.x + blockIdx.y * gridDim.x
 #### int threadId = threadIdx.x + (threadx.y * blockDim.x) + (threadIdx.z * (blockDim.x * blockDim.y))
 #### int id = threadId + blockId * (blockDim.x * blockDim.y * blockDim.z)
-####
+### 15. nvcc編譯流程
+#### nvcc分離程式為主機程式、設備程式
+#### 主機程式為C/C++語法、設備程式為C/C++擴展語言邊寫
+#### nvcc先將設備程式編譯為PTX偽匯編程式，再將PTX編譯為二進制cubin目標程式
+#### 將源程式編譯為PTX程式時，需要使用-arch=compute_XY指定一個虛擬架構的計算能力，用來確定程式能夠使用cuda功能
+#### 將PTX程式編譯為cubin程式時，需要使用-code=sm_ZW指定一個真實架構的計算能力，用來確定可執行文件能夠調用GPU
+### 16. PTX
+#### PTX是cuda基於GPU計算而定義的虛擬機和指令集
+#### nvcc編譯命令使用兩個體系結構: 虛擬的中間體系結構、實際GPU
+#### 虛擬架構如同對應用所需的GPU的聲明
+#### 虛擬架構應盡可能選擇較低、真實架構應盡可能選擇較高
+### 17. GPU架構與計算能力
+#### 每款GPU都有用於標示計算能力的版本編號
+#### 形式為X.Y
+#### X為主版本號、Y表示次版本號
+#### 並非GPU計算能力越高、性能就越高
+### 指定虛擬架構計算能力
+#### C/C++編譯為PTX時，可以指定虛擬架構的計算能力，用來確定程式能夠使用CUDA功能
+#### C/C++轉化為PTX與GPU硬體無關
+### 編譯指令
+#### -arch=compute_XY -- XY分別代表主、次版本號
+#### PTX指令只能在更高的計算能力的GPU使用(向下兼容)
+
+
+
 
 
 
